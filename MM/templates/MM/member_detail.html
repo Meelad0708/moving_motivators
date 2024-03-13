@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<h1>{{ member.user.get_full_name }}</h1>
+<p>Email: {{ member.user.email }}</p>
+<h2>Motivators:</h2>
+<ol>
+  {% for motivator in motivators %}
+    <li>{{ motivator.moving_motivator.name }}: {{ motivator.moving_motivator.description }}</li>
+  {% endfor %}
+</ol>
+
+
+</html>

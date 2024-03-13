@@ -5,4 +5,4 @@ from .models import MovingMotivator, Team, Member, MemberMotivator
 admin.site.register(MovingMotivator)
 admin.site.register(Team)
 admin.site.register(Member)
-admin.site.register(MemberMotivator)
+admin.site.register(MemberMotivator) # not everything needs to be added to admin
