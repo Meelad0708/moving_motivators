@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "MM/base.html" %}
 
+{% block content %}
 <h1>Welcome!</h1>
 <ul>
-  {% for team in teams %}
-    <li><a href="{% url 'team_detail' team.pk %}">{{ team.team_name }}</a></li>
-  {% endfor %}
+    {% for team in teams %}
+        <li><a href="{% url 'team_detail' team.pk %}">{{ team.team_name }}</a></li>
+    {% endfor %}
 </ul>
-
-
-</html>
+{% endblock %}

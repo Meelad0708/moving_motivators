@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Your Site{% endblock %}</title>
+    <!-- Other head elements -->
+</head>
+<body>
+    <header>
+        <!-- Your site's header -->
+    </header>
+
+    {% block content %}
+    <!-- Default content goes here -->
+    {% endblock %}
+
+    <footer>
+        <!-- Your site's footer -->
+    </footer>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

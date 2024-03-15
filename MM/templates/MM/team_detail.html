@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "MM/base.html" %}
+{% block content %}
 
 <h1>{{ team.team_name }}</h1>
 <h2>Members</h2>
@@ -9,5 +11,5 @@
   {% endfor %}
 </ul>
 
-
+{% endblock %}
 </html>

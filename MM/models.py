@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 
 
@@ -14,13 +16,19 @@ class Team(models.Model):
 
 
 class Member(models.Model): # add more fields such as email, team leader boolean
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='member')
     team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True, related_name='members')
     is_team_leader = models.BooleanField(default=False)
     # add picture of employee
 
     def __str__(self):
         return self.user.get_full_name() or self.user.username
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Member.objects.create(User=instance)
+    instance.member.save()
 
 
 class MovingMotivator(models.Model):

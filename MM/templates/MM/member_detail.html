@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "MM/base.html" %}
+{% block content %}
 
 <h1>{{ member.user.get_full_name }}</h1>
 <p>Email: {{ member.user.email }}</p>
@@ -9,6 +11,8 @@
     <li>{{ motivator.moving_motivator.name }}: {{ motivator.moving_motivator.description }}</li>
   {% endfor %}
 </ol>
+
+{% endblock %}
 
 
 </html>
