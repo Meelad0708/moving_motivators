@@ -27,7 +27,7 @@ class Member(models.Model): # add more fields such as email, team leader boolean
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
-        Member.objects.create(User=instance)
+        Member.objects.create(user=instance)
     instance.member.save()
 
 

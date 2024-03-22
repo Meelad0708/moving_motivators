@@ -2,14 +2,21 @@
 <html lang="en">
 {% extends "MM/base.html" %}
 {% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
+<body>
+<div class="container">
 <h1>{{ team.team_name }}</h1>
-<h2>Members</h2>
+<h3>Members</h3>
 <ul>
   {% for member in team.members.all %}
     <li><a href="{% url 'member_detail' member.pk %}">{{ member.user.get_full_name }}</a></li>
   {% endfor %}
 </ul>
-
+</div>
 {% endblock %}
+</body>
+
 </html>

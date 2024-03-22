@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}Your Site{% endblock %}</title>
-    <!-- Other head elements -->
+    <title>{% block title %}Moving Motivator{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
 </head>
-<body>
-    <header>
-        <!-- Your site's header -->
-    </header>
+<body class="background-color: $cyan-100;">
+
+<div class="container">
+    <ul class="nav bg-info">
+        <li class="nav-item">
+            <a class="nav-link link-light" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-light" href="/">Teams</a>
+        </li>
+    <li class="nav-item">
+        <a class="nav-link link-light">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        </a>
+    </li>
+    </ul>
+</div>
 
     {% block content %}
-    <!-- Default content goes here -->
+
     {% endblock %}
 
-    <footer>
-        <!-- Your site's footer -->
-    </footer>
 
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-    </form>
 </body>
 </html>

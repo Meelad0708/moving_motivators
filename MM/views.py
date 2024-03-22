@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Team, Member, MemberMotivator
+from .models import Team, Member, MemberMotivator, MovingMotivator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic.edit import FormView
 from .forms import MemberMotivatorForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -52,9 +53,27 @@ class MemberDetailView(DetailView):
 class MemberMotivatorUpdateOrCreateView(LoginRequiredMixin, FormView):
     template_name = 'MM/member_motivator_form.html'
     form_class = MemberMotivatorForm
-    success_url = '/success/'
 
     def form_valid(self, form):
-        form.instance.member = self.request.user.member
+        member = self.request.user.member
+        moving_motivator = form.cleaned_data['moving_motivator']
+        order = form.cleaned_data['order']
+
+        obj, created = MemberMotivator.objects.update_or_create(
+            member=member,
+            moving_motivator=moving_motivator,
+            defaults={'order': order}
+        )
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('member_detail', kwargs={'pk': self.request.user.member.pk})
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        moving_motivator = MovingMotivator.objects.all()
+        context['moving_motivator'] = moving_motivator
+        return context
+
+# dragable for motivators

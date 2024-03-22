@@ -2,16 +2,22 @@
 <html lang="en">
 {% extends "MM/base.html" %}
 {% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
-<h1>{{ member.user.get_full_name }}</h1>
+<div class="container text-center">
+
+<h2>Member:</h2>
+  <p>{{ member.user.get_full_name }}</p>
 <p>Email: {{ member.user.email }}</p>
-<h2>Motivators:</h2>
-<ol>
+<h3>Motivators:</h3>
+<ol class="text-center">
   {% for motivator in motivators %}
     <li>{{ motivator.moving_motivator.name }}: {{ motivator.moving_motivator.description }}</li>
   {% endfor %}
 </ol>
-
+</div>
 {% endblock %}
 
 

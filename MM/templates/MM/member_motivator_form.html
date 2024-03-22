@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends "MM/base.html" %}
-
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<head>
+    <title>Moving Motivator</title>
+</head>
+<body class ='text-center'>
+<h3 class ='text-center'>Please Enter Your Order Of Moving Motivators</h3>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div class="motivator-dropdown text-center" style="top: 15px">
+    <label for="moving_motivator">Moving Motivator:</label>
+    <select id="moving_motivator" name="moving_motivator">
+        {% for motivator in moving_motivator %}
+            <option value="{{ motivator.pk }}">{{ motivator.name }}</option>
+        {% endfor %}
+            </select>
+    <label for="order">Order:</label>
+    <select id="order" name="order">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
     <button type="submit">Submit</button>
-</form>
+    </div>
 
+    <div class="dropdown-container">
+
+    </div>
+</form>
+<script src="{% static 'MM/motivator.js' %}"></script>
+</body>
+{% endblock %}
 </html>
