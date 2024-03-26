@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends "MM/base.html" %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'MM/style.css' %}">
 {% block content %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-{% load static %}
+
 <head>
     <title>Moving Motivator</title>
 </head>

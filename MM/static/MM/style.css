@@ -1,0 +1,54 @@
+.logout-button {
+    background-color: transparent; /* Make button background transparent */
+    color: inherit; /* Button text color matches its surrounding text color */
+    border: 1px solid white; /* Thin border with a light grey color */
+    /* Additional styling for aesthetics */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.home {
+    background-color: transparent; /* Make button background transparent */
+    color: inherit; /* Button text color matches its surrounding text color */
+    border: 1px solid white; /* Thin border with a light grey color */
+    /* Additional styling for aesthetics */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.team {
+    background-color: transparent; /* Make button background transparent */
+    color: inherit; /* Button text color matches its surrounding text color */
+    border: 1px solid white; /* Thin border with a light grey color */
+    /* Additional styling for aesthetics */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.member-template ul {
+  list-style-type: none;
+  width: 500px;
+  margin-left: 0px;
+}
+
+.member-template h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.member-template li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+.member-template li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.member-template li {
+  padding: 10px;
+  overflow: auto;
+}
+
+.member-template li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+

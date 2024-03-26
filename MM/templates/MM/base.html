@@ -5,6 +5,8 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MM/style.css' %}">
 
 </head>
 <body class="background-color: $cyan-100;">
@@ -12,16 +14,16 @@
 <div class="container">
     <ul class="nav bg-info">
         <li class="nav-item">
-            <a class="nav-link link-light" href="/">Home</a>
+            <a class="nav-link link-light" class="home" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link link-light" href="/">Teams</a>
+            <a class="nav-link link-light" class="team" href="/">Teams</a>
         </li>
     <li class="nav-item">
         <a class="nav-link link-light">
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button type="submit" class="logout-button">Logout</button>
         </form>
         </a>
     </li>
