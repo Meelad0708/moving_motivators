@@ -9,18 +9,24 @@
     <link rel="stylesheet" href="{% static 'MM/style.css' %}">
 
 </head>
-<body class="background-color: $cyan-100;">
+<body class="container bg-secondary">
 
-<div class="container">
-    <ul class="nav bg-info">
-        <li class="nav-item">
-            <a class="nav-link link-light" class="home" href="/">Home</a>
+<div class="container navbar-template">
+    <ul class="nav bg-dark">
+        <li class="nav-item me-5">
+            <a class="nav-link link-info" class="home" href="/">Home</a>
+        </li>
+        <li class="nav-item me-5">
+            <a class="nav-link link-info" class="team" href="/">Teams</a>
+        </li>
+        <li class="nav-item me-5">
+            <a class="nav-link link-info" class="team" href="member_detail">About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link link-light" class="team" href="/">Teams</a>
+            <a class="nav-link link-info" class="team" href="/">Contact Us</a>
         </li>
     <li class="nav-item">
-        <a class="nav-link link-light">
+        <a class="nav-link link-info">
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="logout-button">Logout</button>

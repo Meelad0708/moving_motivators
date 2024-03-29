@@ -7,10 +7,11 @@
 
 {% block content %}
 <div class="container">
-<h1>Welcome!</h1>
-<ul>
+<h1 class="text-white">Welcome, {{ request.user.get_full_name }}</h1>
+<ul class="list-group list-group-flush">
+    <h3 class="text-white" style="margin-left: 10px;">Teams:</h3>
     {% for team in teams %}
-        <li><a href="{% url 'team_detail' team.pk %}">{{ team.team_name }}</a></li>
+        <li class="list-group-item bg-secondary"><a href="{% url 'team_detail' team.pk %}" class="text-white">{{ team.team_name }}</a></li>
     {% endfor %}
 </ul>
 </div>

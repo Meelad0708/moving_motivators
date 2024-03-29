@@ -1,20 +1,17 @@
 .logout-button {
     background-color: transparent; /* Make button background transparent */
     color: inherit; /* Button text color matches its surrounding text color */
-    border: 1px solid white; /* Thin border with a light grey color */
-    /* Additional styling for aesthetics */
-    padding: 5px 10px;
-    cursor: pointer;
+    border: 1px solid black; /* Thin border with a light grey color */
+    margin-left: 570px;
 }
-.home {
+.navbar-template a {
     background-color: transparent; /* Make button background transparent */
-    color: inherit; /* Button text color matches its surrounding text color */
-    border: 1px solid white; /* Thin border with a light grey color */
+    border: 0px solid black; /* Thin border with a light grey color */
     /* Additional styling for aesthetics */
     padding: 5px 10px;
     cursor: pointer;
 }
-.team {
+team {
     background-color: transparent; /* Make button background transparent */
     color: inherit; /* Button text color matches its surrounding text color */
     border: 1px solid white; /* Thin border with a light grey color */
@@ -26,6 +23,7 @@
 .member-template ul {
   list-style-type: none;
   width: 500px;
+  margin-left: 0px;
 }
 
 .member-template h3 {
@@ -49,4 +47,21 @@
 .member-template li:hover {
   background: #eee;
   cursor: pointer;
+}
+
+.teams ul {
+    list-style-type: none;
+}
+
+.teams li a {
+    margin-left: -10px;
+}
+
+.teams li {
+    margin-bottom: 20px;
+}
+
+.team-template ul {
+    color: white;
+    list-style-type: none;
 }

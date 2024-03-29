@@ -44,6 +44,7 @@ class MemberMotivator(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='motivators')
     moving_motivator = models.ForeignKey(MovingMotivator, on_delete=models.CASCADE)
     order = models.IntegerField()
+    date = models.DateField(auto_now=True)
     # ensure that there are no duplicate of moving motivator for a member
     # and that motivators appear in order that members have defined
     class Meta:
@@ -52,6 +53,16 @@ class MemberMotivator(models.Model):
 
     def __str__(self):
         return f"{self.member.user.username} - {self.moving_motivator.name}"
+
+
+class MotivatorChangeLog(models.Model):
+    member_motivator = models.ForeignKey(MemberMotivator, on_delete=models.CASCADE, related_name='change_logs')
+    previous_order = models.IntegerField(null=True, blank=True)
+    new_order = models.IntegerField(null=True, blank=True)
+    change_date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-change_date']
 
 
 # create similar table for team member

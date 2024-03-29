@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends "MM/base.html" %}
-{% load static %}
-    <link rel="stylesheet" href="{% static 'MM/style.css' %}">
 {% block content %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'MM/style.css' %}">
 
 <div class="container member-template">
-    <h2 style="margin-left: 0px;">Member:</h2>
-    <p style="margin-left: 0px;">{{ member.user.get_full_name }}</p>
-    <p style="margin-left: 0px;">Email: {{ member.user.email }}</p>
-    <h3 style="margin-left: 390px; margin-top: -120px;">Motivators:</h3>
+    <h2 style="margin-left: 0px;" class="text-white">Member:</h2>
+    <p style="margin-left: 0px;" class="text-white">{{ member.user.get_full_name }}</p>
+    <p style="margin-left: 0px;" class="text-white">Email: {{ member.user.email }}</p>
+    <h3 style="margin-left: 390px; margin-top: -120px;" class="text-white">Motivators:</h3>
     <div style="margin-left: 350px; margin-top: 0px;">
         <ul>
             {% for motivator in motivators %}
                 <li>
-                    <h3>{{ motivator.moving_motivator.name }}</h3>
-                    <p>{{ motivator.moving_motivator.description }}</p>
+                    <h3 class="text-white">{{ motivator.moving_motivator.name }}</h3>
+                    <p class="text-white">{{ motivator.moving_motivator.description }}</p>
                 </li>
             {% endfor %}
         </ul>
+    </div>
+    <div>
+        <a href="{% url 'motivator_change_history' member.pk %}" class="btn btn-info">History</a>
     </div>
 </div>
 

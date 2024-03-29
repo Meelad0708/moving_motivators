@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Team, Member, MemberMotivator, MovingMotivator
+from .models import Team, Member, MemberMotivator, MovingMotivator, MotivatorChangeLog
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic.edit import FormView
@@ -59,11 +59,19 @@ class MemberMotivatorUpdateOrCreateView(LoginRequiredMixin, FormView):
         moving_motivator = form.cleaned_data['moving_motivator']
         order = form.cleaned_data['order']
 
-        obj, created = MemberMotivator.objects.update_or_create(
+        motivator, created = MemberMotivator.objects.update_or_create(
             member=member,
             moving_motivator=moving_motivator,
             defaults={'order': order}
         )
+
+        if not created:
+            MotivatorChangeLog.objects.create(
+                member_motivator=motivator,
+                previous_order=motivator.order,
+                new_order=order,
+            )
+
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -75,5 +83,16 @@ class MemberMotivatorUpdateOrCreateView(LoginRequiredMixin, FormView):
         moving_motivator = MovingMotivator.objects.all()
         context['moving_motivator'] = moving_motivator
         return context
+
+
+class MotivatorChangeHistoryView(ListView):
+    model = MotivatorChangeLog
+    template_name = 'MM/motivator_change_history.html'
+    context_object_name = 'change_logs'
+
+    def get_queryset(self):
+        return MotivatorChangeLog.objects.filter(member_motivator__member_id=self.kwargs['pk']).select_related('member_motivator').order_by('-change_date')
+
+
 
 # dragable for motivators

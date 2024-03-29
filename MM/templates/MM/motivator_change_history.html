@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "MM/base.html" %}
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'MM/style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+<div class="change-history">
+    <h1>Change History for Motivators</h1>
+    {% for log in change_logs %}
+    <div>
+        <p>Changed on: {{ log.change_date }}</p>
+        <p>From: {{ log.old_value }} to {{ log.new_value }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+{% endblock %}
+</html>

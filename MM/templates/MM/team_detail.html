@@ -3,18 +3,20 @@
 {% extends "MM/base.html" %}
 {% block content %}
 {% load bootstrap5 %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'MM/style.css' %}">
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
 <body>
-<div class="container">
-<h1>{{ team.team_name }}</h1>
-<h3>Members</h3>
-<ul>
+<div class="container team-template">
+<h1 class="text-white">{{ team.team_name }}</h1>
+<h3 class="text-white">Members</h3>
+    <ul class="list-group list-group-flush">
   {% for member in team.members.all %}
-    <li><a href="{% url 'member_detail' member.pk %}">{{ member.user.get_full_name }}</a></li>
+    <li class="list-group-item bg-secondary"><a href="{% url 'member_detail' member.pk %}" class="text-white">{{ member.user.get_full_name }}</a></li>
   {% endfor %}
-</ul>
+    </ul>
 </div>
 {% endblock %}
 </body>
